@@ -1,31 +1,29 @@
 httpd:
-  build: ./httpd/
+  build: ./images/httpd/
   links:
    - idp:idp
-   - openldap:ldap
+   - ldap:ldap
+   - sp:sp
   ports:
    - "80:80"
    - "443:443"
   volumes:
-   - ./certificates:/etc/httpd/ssl:ro
+   - ./vols/httpd/certificates:/etc/httpd/ssl/:ro
 
 idp:
-  #build: ./shibboleth-idp/
+  build: ./images/shibboleth-idp/
   environment:
    - JETTY_MAX_HEAP=128m
-  expose: 
-   - "80"
-   - "443"
-  image: jtgasper3/shibboleth-idp:latest
   ports:
    - "8443:8443"
-  #volumes:
-  # - .:/code
+  volumes:
+   - ./vols/shibboleth-idp/credentials:/opt/shibboleth-idp/credentials/:ro
+   - ./vols/shibboleth-idp/ext-conf:/opt/shibboleth-idp/ext-conf/:ro
   links:
-   - openldap:ldap
+   - ldap:ldap
 
-openldap:
-  #build: ./openldap/
-  expose: 
-   - "389"
-  image: jtgasper3/openldap-basic
+ldap:
+  build: ./images/389ds/
+
+sp:
+  build: ./images/httpd-sp/ 
