@@ -1,0 +1,42 @@
+dn: cn=admin,dc=delransolutions,dc=com
+objectClass: simpleSecurityObject
+objectClass: organizationalRole
+cn: admin
+userPassword: password
+description: LDAP administrator
+
+dn: uid=jsmith,ou=People,dc=delransolutions,dc=com
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+objectClass: inetOrgPerson
+givenName: Joe
+uid: jsmith
+sn: Smith
+cn: John Smith
+mail: jsmith@delransolutions.com
+userPassword: password
+
+dn: uid=banderson,ou=People,dc=delransolutions,dc=com
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+objectClass: inetOrgPerson
+givenName: Bob
+uid: banderson
+sn: Anderson
+cn: Bob Anderson
+mail: banderson@delransolutions.com
+userPassword: password
+
+dn: uid=jgasper,ou=People,dc=delransolutions,dc=com
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+objectClass: inetOrgPerson
+givenName: John
+uid: jgasper
+sn: Gasper
+cn: John Gasper
+mail: jgasper@delransolutions.com
+userPassword: password

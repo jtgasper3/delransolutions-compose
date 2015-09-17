@@ -27,3 +27,6 @@ ldap:
 
 sp:
   build: ./images/httpd-sp/ 
+  volumes:
+   - ./vols/httpd-sp/keys:/etc/shibboleth/keys/:ro
+
