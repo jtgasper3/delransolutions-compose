@@ -1,19 +1,20 @@
-httpd:
-  build: ./images/httpd/
+httpd-proxy:
+  build: ./images/httpd-proxy/
   links:
    - idp:idp
    - ldap:ldap
    - sp:sp
+   - phpcas:phpcas
   ports:
    - "80:80"
    - "443:443"
   volumes:
-   - ./vols/httpd/certificates:/etc/httpd/ssl/:ro
+   - ./vols/httpd-proxy/certificates:/etc/httpd/ssl/:ro
 
 idp:
   build: ./images/shibboleth-idp/
   environment:
-   - JETTY_MAX_HEAP=128m
+   - JETTY_MAX_HEAP=64m
   ports:
    - "8443:8443"
   volumes:
@@ -24,9 +25,19 @@ idp:
 
 ldap:
   build: ./images/389ds/
+  expose: 
+   - "389"
 
 sp:
   build: ./images/httpd-sp/ 
+  expose: 
+   - "443"
   volumes:
    - ./vols/httpd-sp/keys:/etc/shibboleth/keys/:ro
 
+phpcas:
+  build: ./images/httpd-phpcas/ 
+  #volumes:
+  # - ./vols/httpd-phpcas/keys:/etc/shibboleth/keys/:ro
+  extra_hosts:
+    secure.delransolutions.com: 192.168.99.100
