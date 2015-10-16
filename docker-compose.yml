@@ -1,3 +1,12 @@
+bind:
+  build: ./images/bind9/
+  hostname: ns1
+  domainname: delransolutions.com
+  ports:
+   - "53:53/udp"
+   - "53:53/tcp"
+
+
 httpd-proxy:
   build: ./images/httpd-proxy/
   links:
