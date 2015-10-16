@@ -1,4 +1,4 @@
-$TTL    604800
+$TTL    86400
 @       IN      SOA     ns1.delransolutions.com. admin.delransolutions.com. (
                               2         ; Serial
                          604800         ; Refresh
