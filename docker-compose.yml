@@ -5,7 +5,9 @@ bind:
   ports:
    - "53:53/udp"
    - "53:53/tcp"
-
+  volumes:
+   - ./vols/bind9/:/etc/bind/keys/:ro
+   - /dev/urandom:/dev/random
 
 httpd-proxy:
   build: ./images/httpd-proxy/
@@ -31,6 +33,7 @@ idp:
    - ./vols/shibboleth-idp/ext-conf:/opt/shibboleth-idp/ext-conf/:ro
   links:
    - ldap:ldap
+#  mem_limit: 256M
 
 ldap:
   build: ./images/389ds/

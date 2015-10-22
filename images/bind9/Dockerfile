@@ -2,5 +2,7 @@ FROM resystit/bind9
 
 MAINTAINER jtgasper3@gmail.com
 
-COPY named.conf /etc/bind/
-COPY delransolutions.com /etc/bind/master/
+COPY bind/ /etc/bind/
+COPY bind-start.sh /opt/
+
+CMD ["/opt/bind-start.sh"]

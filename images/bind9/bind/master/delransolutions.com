@@ -8,6 +8,7 @@ $TTL    86400
 
 ; Name servers
 @       IN      NS      ns1.delransolutions.com.
+@       IN      NS      ns2.delransolutions.com.
 
 ; A records
 ns1     IN      A       78.46.195.194
@@ -18,3 +19,6 @@ www     IN      A       78.46.195.194
 ;CNAME records
 secure	IN		CNAME	www.delransolutions.com.
 ;secure	IN		CNAME	ec2-54-149-36-198.us-west-2.compute.amazonaws.com.
+
+$INCLUDE 	../keys/Kdelransolutions.com.+007+30738.key
+$INCLUDE 	../keys/Kdelransolutions.com.+007+50363.key
